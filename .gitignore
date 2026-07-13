@@ -1,0 +1,21 @@
+# Visual Paradigm backups
+*.bak*
+
+# Java
+*.class
+
+# IntelliJ
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# Maven
+target/
+
+# Gradle
+build/
+
+# Logs
+*.log
