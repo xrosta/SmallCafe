@@ -1,44 +1,56 @@
 package PadariaBL.SubGestPedidos;
 
 import PadariaBL.SubGestProdutos.Produto;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LinhaProduto {
-	private int _quantidade;
-	public Produto _produto;
+	private int quantidade;
+	public Produto produto;
 
 	public LinhaProduto() {
-		throw new UnsupportedOperationException();
+		this.quantidade = 0;
+		this.produto = null;
 	}
 
-	public LinhaProduto(LinhaProduto aL) {
-		throw new UnsupportedOperationException();
+	public LinhaProduto(LinhaProduto l) {
+		this.quantidade = l.quantidade;
+		this.produto = l.produto;
 	}
 
-	public LinhaProduto(Produto aP, int aQtd) {
-		throw new UnsupportedOperationException();
+	public LinhaProduto(Produto p, int qtd) {
+		this.produto = p;
+		this.quantidade = qtd;
 	}
 
-	public void setProduto(Produto aP) {
-		this._produto = aP;
+	public void setProduto(Produto p) {
+		this.produto = p;
 	}
 
-	public soid setQuantidade(int aQtd) {
-		throw new UnsupportedOperationException();
+	public void setQuantidade(int qtd) {
+		this.quantidade = qtd;
 	}
 
 	public String getNomeProduto() {
-		throw new UnsupportedOperationException();
+		return this.produto == null ? null : this.produto.getNome();
 	}
 
 	public int getQuantidade() {
-		return this._quantidade;
+		return this.quantidade;
 	}
 
 	public float getTotalLinha() {
-		throw new UnsupportedOperationException();
+		return this.produto == null ? 0 : this.produto.getPreco() * this.quantidade;
 	}
 
 	public Map<Integer, Integer> getConsumo() {
-		throw new UnsupportedOperationException();
+		Map<Integer, Integer> consumo = new HashMap<>();
+		if (this.produto != null) {
+			Map<Integer, Integer> prodCons = this.produto.getConsumo();
+			for (Integer k : prodCons.keySet()) {
+				consumo.put(k, prodCons.get(k) * this.quantidade);
+			}
+		}
+		return consumo;
 	}
 }

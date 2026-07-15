@@ -1,48 +1,57 @@
 package PadariaBL.SubGestProdutos;
 
 public class Ingrediente {
-	private int _id;
-	private int _quantidade;
-	private String _nome;
-	private int _avisoNivel;
+	private static int proximoID = 1;
+	private int id;
+	private int quantidade;
+	private String nome;
+	private int avisoNivel;
 
-	public Ingrediente(Ingrediente aI) {
-		throw new UnsupportedOperationException();
+	public Ingrediente(Ingrediente i) {
+		this.id = i.getID();
+		this.quantidade = i.getQuantidade();
+		this.nome = i.getNome();
+		this.avisoNivel = i.avisoNivel;
 	}
 
-	public Ingrediente(int aQtd, String aNome, int aMinimo) {
-		throw new UnsupportedOperationException();
+	public Ingrediente(int qtd, String nome, int minimo) {
+		this.id = proximoID++;
+		this.quantidade = qtd;
+		this.nome = nome;
+		this.avisoNivel = minimo;
 	}
 
-	public void setQuantidade(int aQtd) {
-		this._quantidade = aQtd;
+	public void setQuantidade(int qtd) {
+		this.quantidade = qtd;
 	}
 
-	public void setNome(String aNome) {
-		this._nome = aNome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public int getID() {
-		throw new UnsupportedOperationException();
+		return this.id;
 	}
 
 	public int getQuantidade() {
-		return this._quantidade;
+		return this.quantidade;
 	}
 
 	public String getNome() {
-		return this._nome;
+		return this.nome;
 	}
 
-	public void consumir(int aQtd) {
-		throw new UnsupportedOperationException();
+	public void consumir(int qtd) {
+		if (qtd <= 0)
+			return;
+		this.quantidade -= qtd;
 	}
 
 	public boolean abaixoNivel() {
-		throw new UnsupportedOperationException();
+		return this.quantidade <= this.avisoNivel;
 	}
 
-	public boolean qtdSuficiente(int aQtd) {
-		throw new UnsupportedOperationException();
+	public boolean qtdSuficiente(int qtd) {
+		return this.quantidade >= qtd;
 	}
 }

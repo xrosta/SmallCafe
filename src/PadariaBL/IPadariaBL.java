@@ -1,5 +1,9 @@
 package PadariaBL;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+
 import PadariaBL.SubGestProdutos.Produto;
 import PadariaBL.SubGestPedidos.Pedido;
 import PadariaBL.SubGestProdutos.Ingrediente;
@@ -10,11 +14,11 @@ public interface IPadariaBL {
 
 	public Map<Integer, Produto> listarProdutos();
 
-	public String adicionarItemPedido(int aIdPedido, Produto aItem, int aQtd);
+	public String adicionarItemPedido(int idPedido, Produto item, int qtd);
 
-	public String finalizarPedido(int aIdPedido);
+	public String finalizarPedido(int idPedido);
 
-	public String cancelarPedido(int aIdPedido);
+	public String cancelarPedido(int idPedido);
 
 	public List<Pedido> listarPedidos();
 
@@ -24,11 +28,11 @@ public interface IPadariaBL {
 
 	public List<Ingrediente> listarStock();
 
-	public String avancarEstadoPedido(int aIdPedido);
+	public String avancarEstadoPedido(int idPedido);
 
-	public int getNumeroPedidos(LocalDate aIncicio, LocalDate aFim);
+	public int getNumeroPedidos(LocalDate inicio, LocalDate fim);
 
-	public float getTotalVendido(LocalDate aInicio, LocalDate aFim);
+	public float getTotalVendido(LocalDate inicio, LocalDate fim);
 
-	public Map<String, Integer> getProdutosMaisVendidos(LocalDate aInicio, LocalDate aFim);
+	public Map<String, Integer> getProdutosMaisVendidos(LocalDate inicio, LocalDate fim);
 }
